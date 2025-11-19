@@ -1,3 +1,41 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
+
+def student_photo_path(instance,filename):
+    return f'students/{instance.name}/{filename}'
+
+class Student_Info(models.Model):
+    STATUS=[
+        ('active','Active'),
+        ('inactive','Inactive'),
+    ]
+
+    CLASS_CHOICES = [
+    ("1", "Class 1"),
+    ("2", "Class 2"),
+    ("3", "Class 3"),
+    ("4", "Class 4"),
+    ("5", "Class 5"),
+    ("6", "Class 6"),
+    ("7", "Class 7"),
+    ("8", "Class 8"),
+    ("9", "Class 9"),
+    ("10", "Class 10"),]
+
+    # CLASS_CHOICES = [(str(i), f"Class {i}") for i in range(1, 11)]
+    name = models.CharField(max_length=100)
+    roll = models.IntegerField()
+    student_class=models.CharField(max_length=2, choices=CLASS_CHOICES)
+    dob = models.DateTimeField(null=False,blank=False)
+    status=models.CharField(max_length=10,choices=STATUS, default='active')
+    father_name = models.CharField(max_length=100)
+    mother_name = models.CharField(max_length=100)
+    phone=models.CharField(max_length=100)
+    adress=models.TextField()
+    photo = models.ImageField(upload_to=student_photo_path,blank=True,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name} - Class: {self.student_class} - Roll: {self.roll}'
+
