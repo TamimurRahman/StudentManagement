@@ -55,8 +55,8 @@
       <td>{{i.student_class}}</td>
       <td>{{i.roll}}</td>
       <td>{{i.status}}</td>
-      <td><a href="">View</a></td>
-      <td><a href="">Edit</a></td>
+      <td><a href="{% url 'st_profile_view' i.id %}">View</a></td>
+      <td><a href="{% url 'update' i.id %}">Edit</a></td>
       <td><a href="">Delete</a></td>
     </tr>
     

@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
-{% block content %}
+
+<!-- This the single form for just Create Student -->
+
+{% comment %} {% block content %}
 
 <div class="container mt-4">
     <strong>Create Student</strong>
@@ -70,8 +73,8 @@
 
         <!-- Address -->
         <div class="col-12">
-            <label for="adress" class="form-label">Address</label>
-            <textarea class="form-control" id="adress" name="adress"></textarea>
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" id="address" name="adress"></textarea>
         </div>
 
         <!-- Photo -->
@@ -91,4 +94,7 @@
 {% endblock content %}
 
 
+ {% endcomment %}
 
+
+ 

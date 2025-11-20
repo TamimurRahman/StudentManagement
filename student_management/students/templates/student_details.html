@@ -1,1 +1,22 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{student.photo.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{student.name}}</h5>
+    <p><strong> Roll: </strong>{{student.roll}}</p>
+    <p><strong> Class: </strong>{{student.student_class}}</p>
+    <p><strong> DOB: </strong>{{student.dob}}</p>
+    <p><strong> Status: </strong>{{student.status}}</p>
+    <p><strong> Father Name: </strong>{{student.father_name}}</p>
+    <p><strong> Mother Name: </strong>{{student.mother_name}}</p>
+    <p><strong> phone: </strong>{{student.phone}}</p>
+    <p><strong>Address:  </strong>{{student.adress}}</p>
+    <a href="{% url 'list' %}" class="btn btn-primary">Back to list</a>
+  </div>
+</div>
+
+
+{% endblock content %}
