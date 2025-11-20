@@ -24,7 +24,7 @@ def create_student(request):
     return render(request,'create_student.html')
 
 def student_list(request):
-
-    return render(request,'student_list.html')
+    all_students = Student_Info.objects.all()
+    return render(request,'student_list.html',{'all_students':all_students})
 
         
