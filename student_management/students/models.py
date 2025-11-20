@@ -32,9 +32,9 @@ class Student_Info(models.Model):
     father_name = models.CharField(max_length=100)
     mother_name = models.CharField(max_length=100)
     phone=models.CharField(max_length=100)
-    adress=models.TextField()
+    adress=models.TextField(max_length=100)
     photo = models.ImageField(upload_to=student_photo_path,blank=True,null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name} - Class: {self.student_class} - Roll: {self.roll}'

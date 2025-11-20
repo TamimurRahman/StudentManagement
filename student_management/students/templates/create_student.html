@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <strong>Create Student</strong>
+
+    <form method="post" enctype="multipart/form-data" class="row g-3">
+        {% csrf_token %}
+
+        <!-- Name -->
+        <div class="col-md-6">
+            <label for="name" class="form-label">Student Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+
+        <!-- Roll -->
+        <div class="col-md-6">
+            <label for="roll" class="form-label">Roll</label>
+            <input type="number" class="form-control" id="roll" name="roll">
+        </div>
+
+        <!-- Class -->
+         <label for="student_class">Class: 
+    <select class="form-select form-select-sm" id='student_class'aria-label=".form-select-sm example" name='student_class'>
+        <option selected>Select Class</option>
+        <option value="1">Class 1</option>
+        <option value="2">Class 2</option>
+        <option value="3">Class 3</option>
+        <option value="4">Class 4</option>
+        <option value="5">Class 5</option>
+        <option value="6">Class 6</option>
+        <option value="7">Class 7</option>
+        <option value="8">Class 8</option>
+        <option value="9">Class 9</option>
+        <option value="10">Class 10</option>
+    </select>
+</label>
+        <!-- DOB -->
+        <div class="col-md-6">
+            <label for="dob" class="form-label">DOB</label>
+            <input type="date" class="form-control" id="dob" name="dob">
+        </div>
+
+        <!-- Status -->
+         <label for="student_status">Student Status: 
+  <select class="form-select form-select-sm" aria-label=".form-select-sm example" name='status' id='student_status'>
+     <option selected>Select Status</option>
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+    </select>
+</label>
+        <!-- Father Name -->
+        <div class="col-md-6">
+            <label for="father_name" class="form-label">Father Name</label>
+            <input type="text" class="form-control" id="father_name" name="father_name">
+        </div>
+
+        <!-- Mother Name -->
+        <div class="col-md-6">
+            <label for="mother_name" class="form-label">Mother Name</label>
+            <input type="text" class="form-control" id="mother_name" name="mother_name">
+        </div>
+
+        <!-- Phone -->
+        <div class="col-md-6">
+            <label for="phone" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+
+        <!-- Address -->
+        <div class="col-12">
+            <label for="adress" class="form-label">Address</label>
+            <textarea class="form-control" id="adress" name="adress"></textarea>
+        </div>
+
+        <!-- Photo -->
+        <div class="col-12">
+            <label for="photo" class="form-label">Student Photo</label>
+            <input class="form-control" type="file" id="photo" name="photo">
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </div>
+
+    </form>
+
+</div>
+{% endblock content %}
+
+
+
