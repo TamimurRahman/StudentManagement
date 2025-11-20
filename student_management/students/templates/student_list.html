@@ -57,7 +57,7 @@
       <td>{{i.status}}</td>
       <td><a href="{% url 'st_profile_view' i.id %}">View</a></td>
       <td><a href="{% url 'update' i.id %}">Edit</a></td>
-      <td><a href="">Delete</a></td>
+      <td><a href="{% url 'student_delete' i.id %}">Delete</a></td>
     </tr>
     
     {% endfor %}

@@ -116,6 +116,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Optional: global static folder
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # if you created a global static folder
+]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'students','media')
 # Default primary key field type

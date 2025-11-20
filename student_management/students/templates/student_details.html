@@ -1,9 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="card" style="width: 18rem;">
+{% if student.photo %}
   <img class="card-img-top" src="{{student.photo.url}}" alt="Card image cap">
+{% else %}
+    <img class="card-img-top" src="{% static 'students/image.png' %}" alt="Card image cap">
+{% endif %}
   <div class="card-body">
     <h5 class="card-title">{{student.name}}</h5>
     <p><strong> Roll: </strong>{{student.roll}}</p>
