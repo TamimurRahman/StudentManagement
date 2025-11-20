@@ -26,7 +26,11 @@ def create_student(request):
 
 def student_list(request):
     all_students = Student_Info.objects.all()
-    return render(request,'student_list.html',{'all_students':all_students})
+    class_filter = request.GET.get('student_class','all')
+    if class_filter != 'all':
+        all_students = all_students.filter(student_class=class_filter)
+        
+    return render(request,'student_list.html',{'all_students':all_students,'class_filter':class_filter})
 
 def student_profile_view(request,id):
     student = Student_Info.objects.get(id=id) # id capture korlam

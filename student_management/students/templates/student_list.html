@@ -21,7 +21,22 @@
 
 
 <h1>This is Student List page</h1>
-
+<form action="" method='get'>
+<select class="form-select form-select-sm" aria-label=".form-select-sm example" name='student_class'>
+  <option value='all'{% if class_filter == 'all' %}selected{% endif %}>ALL</option>
+  <option value="1"{% if class_filter == '1' %}selected{% endif %}>class 1</option>
+  <option value="2"{% if class_filter == '2' %}selected{% endif %}>class 2</option>
+  <option value="3"{% if class_filter == '3' %}selected{% endif %}>class 3</option>
+    <option value="4"{% if class_filter == '4' %}selected{% endif %}>class 4</option>
+  <option value="5"{% if class_filter == '5' %}selected{% endif %}>class 5</option>
+  <option value="6"{% if class_filter == '6' %}selected{% endif %}>class 6</option>
+    <option value="7"{% if class_filter == '7' %}selected{% endif %}>class 7</option>
+  <option value="8"{% if class_filter == '8' %}selected{% endif %}>class 8</option>
+  <option value="9"{% if class_filter == '9' %}selected{% endif %}>class 9</option>
+  <option value="10"{% if class_filter == '10' %}selected{% endif %}>class 10</option>
+</select>
+<button type="submit">Filter</button>
+</form>
     <table class="table">
   <thead>
     <tr>
