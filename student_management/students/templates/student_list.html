@@ -1,7 +1,8 @@
-
 {% extends "base.html" %}
 
 {% block content %}
+
+<!-- ====== Styles for Student Images ====== -->
 <style>
     .student-img {
         width: 50px;
@@ -12,16 +13,14 @@
     .placeholder-img {
         width: 40px;
         height: 40px;
-        background: #6c757d; /* bootstrap secondary */
+        background: #6c757d; /* Bootstrap secondary */
         color: white;
         font-weight: bold;
         font-size: 10px;
     }
 </style>
 
-
 <h1>This is Student List page</h1>
-
 
 <!-- Class Filter  for advance and dynamically filter-->
 
@@ -38,77 +37,90 @@
         <button type="submit" class="btn btn-primary btn-sm">Filter</button>
     </div>
 </form> {% endcomment %}
+
+<!-- ====== Search Form ====== -->
 <form method="get">
-    <input type="text" name="name_query" placeholder="Search..." value="{{ request.GET.name_query }}">
+    <input 
+        type="text" 
+        name="name_query" 
+        placeholder="Search by student name" 
+        value="{{ request.GET.name_query }}">
     <button type="submit">Search</button>
 </form>
 
-<form action="" method='get'>
-<select class="form-select form-select-sm" aria-label=".form-select-sm example" name='student_class'>
-  <option value='all'{% if class_filter == 'all' %}selected{% endif %}>ALL</option>
-  <option value="1"{% if class_filter == '1' %}selected{% endif %}>class 1</option>
-  <option value="2"{% if class_filter == '2' %}selected{% endif %}>class 2</option>
-  <option value="3"{% if class_filter == '3' %}selected{% endif %}>class 3</option>
-    <option value="4"{% if class_filter == '4' %}selected{% endif %}>class 4</option>
-  <option value="5"{% if class_filter == '5' %}selected{% endif %}>class 5</option>
-  <option value="6"{% if class_filter == '6' %}selected{% endif %}>class 6</option>
-    <option value="7"{% if class_filter == '7' %}selected{% endif %}>class 7</option>
-  <option value="8"{% if class_filter == '8' %}selected{% endif %}>class 8</option>
-  <option value="9"{% if class_filter == '9' %}selected{% endif %}>class 9</option>
-  <option value="10"{% if class_filter == '10' %}selected{% endif %}>class 10</option>
-</select>
-<button type="submit">Filter</button>
+<!-- ====== Class Filter Form ====== -->
+<form action="" method="get">
+    <select 
+        class="form-select form-select-sm" 
+        aria-label=".form-select-sm example" 
+        name="student_class">
+        <option value="all" {% if class_filter == 'all' %}selected{% endif %}>ALL</option>
+        <option value="1" {% if class_filter == '1' %}selected{% endif %}>Class 1</option>
+        <option value="2" {% if class_filter == '2' %}selected{% endif %}>Class 2</option>
+        <option value="3" {% if class_filter == '3' %}selected{% endif %}>Class 3</option>
+        <option value="4" {% if class_filter == '4' %}selected{% endif %}>Class 4</option>
+        <option value="5" {% if class_filter == '5' %}selected{% endif %}>Class 5</option>
+        <option value="6" {% if class_filter == '6' %}selected{% endif %}>Class 6</option>
+        <option value="7" {% if class_filter == '7' %}selected{% endif %}>Class 7</option>
+        <option value="8" {% if class_filter == '8' %}selected{% endif %}>Class 8</option>
+        <option value="9" {% if class_filter == '9' %}selected{% endif %}>Class 9</option>
+        <option value="10" {% if class_filter == '10' %}selected{% endif %}>Class 10</option>
+    </select>
+    <button type="submit">Filter</button>
 </form>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">SL</th>
-      <th scope="col">Student</th><style>
-</style>
-      <th scope="col">Contact</th>
-      <th scope="col">Class</th>
-      <th scope="col">Roll No</th>
-      <th scope="col">Status</th>
-      <th scope='col'>Profile</th>
-      <th scope='col'>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
 
+<!-- ====== Student List Table ====== -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">SL</th>
+            <th scope="col">Student</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Class</th>
+            <th scope="col">Roll No</th>
+            <th scope="col">Status</th>
+            <th scope="col">Profile</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
 
-{% for i in all_students %}
-    
-    <td>{{forloop.counter}}</td>
-<td>
-    {% if i.photo %}
-        <img src="{{ i.photo.url }}" alt="{{ i.name }}" class="student-img rounded-circle">
-    {% else %}
-        <div class="placeholder-img rounded-circle d-flex justify-content-center align-items-center">
-            {{ i.name|slice:":2" | upper }}
-        </div>
-    {% endif %}
-    {{ i.name }}
-</td>
+    <tbody>
+        {% for i in all_students %}
+        <tr>
+            <!-- Serial Number -->
+            <td>{{ forloop.counter }}</td>
 
-      <td>{{i.phone}}</td>
-      <td>{{i.student_class}}</td>
-      <td>{{i.roll}}</td>
-      <td>{{i.status}}</td>
-      <td><a href="{% url 'st_profile_view' i.id %}">View</a></td>
-      <td><a href="{% url 'update' i.id %}">Edit</a></td>
-      <td><a href="{% url 'student_delete' i.id %}">Delete</a></td>
-    </tr>
-    {% empty %}
-<tr>
-    <td colspan="8" class="text-center">No students found</td>
-</tr>
-    {% endfor %}
-  
-  </tbody>
+            <!-- Student Photo or Placeholder -->
+            <td>
+                {% if i.photo %}
+                    <img src="{{ i.photo.url }}" alt="{{ i.name }}" class="student-img rounded-circle">
+                {% else %}
+                    <div class="placeholder-img rounded-circle d-flex justify-content-center align-items-center">
+                        {{ i.name|slice:":2"|upper }}
+                    </div>
+                {% endif %}
+                {{ i.name }}
+            </td>
+
+            <!-- Student Details -->
+            <td>{{ i.phone }}</td>
+            <td>{{ i.student_class }}</td>
+            <td>{{ i.roll }}</td>
+            <td>{{ i.status }}</td>
+
+            <!-- Profile Link -->
+            <td><a href="{% url 'st_profile_view' i.id %}">View</a></td>
+
+            <!-- Action Links -->
+            <td><a href="{% url 'update' i.id %}">Edit</a></td>
+            <td><a href="{% url 'student_delete' i.id %}">Delete</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8" class="text-center">No students found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
+
 {% endblock content %}
-
-
-
-
-

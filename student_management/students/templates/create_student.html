@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-
-<!-- This the single form for just Create Student -->
-
-{% comment %} {% block content %}
+<!-- ====== This is the single form for just Create Student ====== -->
+{% comment %}
+{% block content %}
 
 <div class="container mt-4">
     <strong>Create Student</strong>
@@ -24,21 +23,22 @@
         </div>
 
         <!-- Class -->
-         <label for="student_class">Class: 
-    <select class="form-select form-select-sm" id='student_class'aria-label=".form-select-sm example" name='student_class'>
-        <option selected>Select Class</option>
-        <option value="1">Class 1</option>
-        <option value="2">Class 2</option>
-        <option value="3">Class 3</option>
-        <option value="4">Class 4</option>
-        <option value="5">Class 5</option>
-        <option value="6">Class 6</option>
-        <option value="7">Class 7</option>
-        <option value="8">Class 8</option>
-        <option value="9">Class 9</option>
-        <option value="10">Class 10</option>
-    </select>
-</label>
+        <label for="student_class">Class:
+            <select class="form-select form-select-sm" id="student_class" aria-label=".form-select-sm example" name="student_class">
+                <option selected>Select Class</option>
+                <option value="1">Class 1</option>
+                <option value="2">Class 2</option>
+                <option value="3">Class 3</option>
+                <option value="4">Class 4</option>
+                <option value="5">Class 5</option>
+                <option value="6">Class 6</option>
+                <option value="7">Class 7</option>
+                <option value="8">Class 8</option>
+                <option value="9">Class 9</option>
+                <option value="10">Class 10</option>
+            </select>
+        </label>
+
         <!-- DOB -->
         <div class="col-md-6">
             <label for="dob" class="form-label">DOB</label>
@@ -46,13 +46,14 @@
         </div>
 
         <!-- Status -->
-         <label for="student_status">Student Status: 
-  <select class="form-select form-select-sm" aria-label=".form-select-sm example" name='status' id='student_status'>
-     <option selected>Select Status</option>
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-    </select>
-</label>
+        <label for="student_status">Student Status:
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="status" id="student_status">
+                <option selected>Select Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </label>
+
         <!-- Father Name -->
         <div class="col-md-6">
             <label for="father_name" class="form-label">Father Name</label>
@@ -92,12 +93,10 @@
 
 </div>
 {% endblock content %}
+{% endcomment %}
 
-
- {% endcomment %}
-
-
- {% block content %}
+<!-- ====== This is the dynamic form (used for Create & Update) ====== -->
+{% block content %}
 
 <div class="container mt-4">
     <strong>Create Student</strong>
@@ -108,88 +107,89 @@
         <!-- Name -->
         <div class="col-md-6">
             <label for="name" class="form-label">Student Name</label>
-            <input type="text" class="form-control" id="name" name="name" value='{{student.name | default:""}}'>
+            <input type="text" class="form-control" id="name" name="name" value="{{ student.name | default:'' }}">
         </div>
 
         <!-- Roll -->
         <div class="col-md-6">
             <label for="roll" class="form-label">Roll</label>
-            <input type="number" class="form-control" id="roll" name="roll" value='{{student.roll | default:""}}'>
+            <input type="number" class="form-control" id="roll" name="roll" value="{{ student.roll | default:'' }}">
         </div>
 
         <!-- Class -->
-         <label for="student_class">Class: 
-    <select class="form-select form-select-sm" id='student_class'aria-label=".form-select-sm example" name='student_class'>
-        <option value=''>Select Class</option>
-        <option value="1" {% if student.student_class == '1'%}selected{% endif %}>Class 1</option>
-        <option value="2" {% if student.student_class == '2'%}selected{% endif %}>Class 2</option>
-        <option value="3" {% if student.student_class == '3'%}selected{% endif %}>Class 3</option>
-        <option value="4" {% if student.student_class == '4'%}selected{% endif %}>Class 4</option>
-        <option value="5" {% if student.student_class == '5'%}selected{% endif %}>Class 5</option>
-        <option value="6" {% if student.student_class == '6'%}selected{% endif %}>Class 6</option>
-        <option value="7" {% if student.student_class == '7'%}selected{% endif %}>Class 7</option>
-        <option value="8" {% if student.student_class == '8'%}selected{% endif %}>Class 8</option>
-        <option value="9" {% if student.student_class == '9'%}selected{% endif %}>Class 9</option>
-        <option value="10"{% if student.student_class == '10'%}selected{% endif %}>Class 10</option>
-    </select>
-</label>
+        <label for="student_class">Class:
+            <select class="form-select form-select-sm" id="student_class" aria-label=".form-select-sm example" name="student_class">
+                <option value="">Select Class</option>
+                <option value="1" {% if student.student_class == '1' %}selected{% endif %}>Class 1</option>
+                <option value="2" {% if student.student_class == '2' %}selected{% endif %}>Class 2</option>
+                <option value="3" {% if student.student_class == '3' %}selected{% endif %}>Class 3</option>
+                <option value="4" {% if student.student_class == '4' %}selected{% endif %}>Class 4</option>
+                <option value="5" {% if student.student_class == '5' %}selected{% endif %}>Class 5</option>
+                <option value="6" {% if student.student_class == '6' %}selected{% endif %}>Class 6</option>
+                <option value="7" {% if student.student_class == '7' %}selected{% endif %}>Class 7</option>
+                <option value="8" {% if student.student_class == '8' %}selected{% endif %}>Class 8</option>
+                <option value="9" {% if student.student_class == '9' %}selected{% endif %}>Class 9</option>
+                <option value="10" {% if student.student_class == '10' %}selected{% endif %}>Class 10</option>
+            </select>
+        </label>
+
         <!-- DOB -->
         <div class="col-md-6">
             <label for="dob" class="form-label">DOB</label>
-            <input type="date" class="form-control" id="dob" name="dob" value='{{student.dob | date:'Y-m-d'}}'>
+            <input type="date" class="form-control" id="dob" name="dob" value="{{ student.dob | date:'Y-m-d' }}">
         </div>
 
         <!-- Status -->
-         <label for="student_status">Student Status: 
-  <select class="form-select form-select-sm" aria-label=".form-select-sm example" name='status' id='student_status'>
-     <option selected>Select Status</option>
-    <option value="active" {% if student.status == 'active' %}selected{% endif %}>Active</option>
-    <option value="inactive" {% if student.status == 'inactive' %}selected{% endif %}>Inactive</option>
-    </select>
-</label>
+        <label for="student_status">Student Status:
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="status" id="student_status">
+                <option selected>Select Status</option>
+                <option value="active" {% if student.status == 'active' %}selected{% endif %}>Active</option>
+                <option value="inactive" {% if student.status == 'inactive' %}selected{% endif %}>Inactive</option>
+            </select>
+        </label>
+
         <!-- Father Name -->
         <div class="col-md-6">
             <label for="father_name" class="form-label">Father Name</label>
-            <input type="text" class="form-control" id="father_name" name="father_name" value='{{student.father_name | default:""}}'>
+            <input type="text" class="form-control" id="father_name" name="father_name" value="{{ student.father_name | default:'' }}">
         </div>
 
         <!-- Mother Name -->
         <div class="col-md-6">
             <label for="mother_name" class="form-label">Mother Name</label>
-            <input type="text" class="form-control" id="mother_name" name="mother_name" value='{{student.mother_name | default:""}}'>
+            <input type="text" class="form-control" id="mother_name" name="mother_name" value="{{ student.mother_name | default:'' }}">
         </div>
 
         <!-- Phone -->
         <div class="col-md-6">
             <label for="phone" class="form-label">Contact Number</label>
-            <input type="text" class="form-control" id="phone" name="phone" value='{{student.phone | default:""}}'>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ student.phone | default:'' }}">
         </div>
 
         <!-- Address -->
         <div class="col-12">
             <label for="adress" class="form-label">Address</label>
-            <textarea class="form-control" id="adress" name="adress" >{{student.adress}}</textarea>
+            <textarea class="form-control" id="adress" name="adress">{{ student.adress }}</textarea>
         </div>
 
         <!-- Photo -->
- <div class="mb-2">
-    {% if student.photo %}
-        <img src="{{ student.photo.url }}" width="120" height="120" style="object-fit: cover; border-radius: 5px;">
-    {% endif %}
-</div> 
-
-
-    {% comment %} {% if student.photo %}
-        <img src="{{ student.photo.url }}" width="50" height="50" style="object-fit: cover; border-radius: 50%;">
-    {% else %}
-        <div class="bg-secondary text-white text-center rounded-circle" style="width:50px; height:50px; line-height:50px;">
-            {{ student.name|slice:":1" }}
+        <div class="mb-2">
+            {% if student.photo %}
+                <img src="{{ student.photo.url }}" width="120" height="120" style="object-fit: cover; border-radius: 5px;">
+            {% endif %}
         </div>
-    {% endif %} {% endcomment %}
 
+        {% comment %}
+        {% if student.photo %}
+            <img src="{{ student.photo.url }}" width="50" height="50" style="object-fit: cover; border-radius: 50%;">
+        {% else %}
+            <div class="bg-secondary text-white text-center rounded-circle" style="width:50px; height:50px; line-height:50px;">
+                {{ student.name|slice:":1" }}
+            </div>
+        {% endif %}
+        {% endcomment %}
 
-<input class="form-control" type="file" id="photo" name="photo">
-
+        <input class="form-control" type="file" id="photo" name="photo">
 
         <!-- Submit -->
         <div class="col-12">
