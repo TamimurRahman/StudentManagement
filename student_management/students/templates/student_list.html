@@ -40,6 +40,8 @@
 
 <!-- ====== Search Form ====== -->
 <form method="get">
+    <input type="hidden" name="student_class" value="{{ class_filter }}">
+    
     <input 
         type="text" 
         name="name_query" 
@@ -47,6 +49,19 @@
         value="{{ request.GET.name_query }}">
     <button type="submit">Search</button>
 </form>
+
+
+{% comment %}
+ তুমি যদি Class 5 select করো
+
+এখন search করো “Rahim”
+
+hidden input থেকে আবার student_class=5 backend এ যাবে
+
+so, search হবে শুধু Class 5 এর মধ্যে। 
+{% endcomment %}
+
+
 
 <!-- ====== Class Filter Form ====== -->
 <form action="" method="get">
