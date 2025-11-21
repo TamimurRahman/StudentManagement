@@ -38,4 +38,21 @@ class Student_Info(models.Model):
 
     def __str__(self):
         return f'{self.name} - Class: {self.student_class} - Roll: {self.roll}'
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['student_class', 'roll'],
+                name='unique_roll_per_class'
+            )
+        ]
 
+# 🔍 Eta Ki Kore?
+
+# Class 1 → roll 1, roll 2, roll 3 allowed
+
+# Class 2 → roll 1, roll 2, roll 3 allowed
+
+# BUT Class 1 → roll 2 ei ta duto bar create korte chaile error dibe
+
+# Class change korle same roll allowed

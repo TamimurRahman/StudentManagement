@@ -21,6 +21,28 @@
 
 
 <h1>This is Student List page</h1>
+
+
+<!-- Class Filter  for advance and dynamically filter-->
+
+{% comment %} <form method="get" class="mb-3 row g-2">
+    <div class="col-auto">
+        <select class="form-select form-select-sm" name="student_class">
+            <option value="all" {% if class_filter=='all' %}selected{% endif %}>All Classes</option>
+            {% for i in "12345678910" %}
+            <option value="{{ i }}" {% if class_filter==i %}selected{% endif %}>Class {{ i }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+    </div>
+</form> {% endcomment %}
+<form method="get">
+    <input type="text" name="name_query" placeholder="Search..." value="{{ request.GET.name_query }}">
+    <button type="submit">Search</button>
+</form>
+
 <form action="" method='get'>
 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name='student_class'>
   <option value='all'{% if class_filter == 'all' %}selected{% endif %}>ALL</option>
@@ -52,7 +74,9 @@
     </tr>
   </thead>
   <tbody>
-    {% for i in all_students %}
+
+
+{% for i in all_students %}
     
     <td>{{forloop.counter}}</td>
 <td>
@@ -74,7 +98,10 @@
       <td><a href="{% url 'update' i.id %}">Edit</a></td>
       <td><a href="{% url 'student_delete' i.id %}">Delete</a></td>
     </tr>
-    
+    {% empty %}
+<tr>
+    <td colspan="8" class="text-center">No students found</td>
+</tr>
     {% endfor %}
   
   </tbody>

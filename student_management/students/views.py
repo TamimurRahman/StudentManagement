@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.db.models import Q
 from .models import Student_Info
 # Create your views here.
 
@@ -26,11 +27,16 @@ def create_student(request):
 
 def student_list(request):
     all_students = Student_Info.objects.all()
-    class_filter = request.GET.get('student_class','all')
+    class_filter = request.GET.get('student_class','all')#for filtering
+    query = request.GET.get('name_query','').strip()
+    # search_result = None
     if class_filter != 'all':
         all_students = all_students.filter(student_class=class_filter)
+    
+    if query:
+        all_students = all_students.filter(Q(name__icontains=query))
         
-    return render(request,'student_list.html',{'all_students':all_students,'class_filter':class_filter})
+    return render(request,'student_list.html',{'all_students':all_students,'class_filter':class_filter,'query':query})
 
 def student_profile_view(request,id):
     student = Student_Info.objects.get(id=id) # id capture korlam
